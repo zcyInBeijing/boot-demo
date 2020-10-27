@@ -2,7 +2,7 @@ package com.xfs.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.xfs.base.ResultVO;
-import com.xfs.trade.oms.rpc.OrderRpcService;
+//import com.xfs.trade.oms.rpc.OrderRpcService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -30,8 +30,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class TestController {
 
 
-    @Reference(version = "1.0.0")
-    private OrderRpcService orderRpcService;
+//    @Reference(version = "1.0.0")
+//    private OrderRpcService orderRpcService;
 
 
     @GetMapping("/hello")
@@ -66,8 +66,9 @@ public class TestController {
     @ApiOperation(value="dubboTest", notes="dubboTest")
     public ResultVO dubboTest() {
         log.info("TestController.dubboTest>>>");
-        String result = orderRpcService.sayHello();
-        log.info("TestController.dubboTest<<<:{}",result);
-        return ResultVO.createSuccess(result);
+//        String result = orderRpcService.sayHello();
+//        log.info("TestController.dubboTest<<<:{}",result);
+//        return ResultVO.createSuccess(result);
+        return ResultVO.createSuccess("");
     }
 }

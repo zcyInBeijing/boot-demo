@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import com.xfs.base.PageVo;
 
 
-import javax.validation.Valid;
+import com.xfs.annotation.ParamValid;
 import java.util.List;
 
 /**
@@ -35,7 +35,7 @@ public class UserInfoController {
     @ApiOperation(value = "用户信息分页查询", response = UserInfo.class)
     @PostMapping("/page")
     @ResponseBody
-    public ResultVO queryWithPage (@Valid @RequestBody PageVo param){
+    public ResultVO queryWithPage (@RequestBody PageVo param){
         Object data = iUserInfoService.page(param);
         return ResultVOUtil.success(data);
     }
@@ -51,7 +51,7 @@ public class UserInfoController {
     @ApiOperation(value = "用户信息新增")
     @PostMapping(value = "/add")
     @ResponseBody
-    public  ResultVO add(@Valid @RequestBody UserInfo param) {
+    public  ResultVO add(@RequestBody UserInfo param) {
         iUserInfoService.add(param);
         return ResultVOUtil.success();
     }
@@ -59,7 +59,7 @@ public class UserInfoController {
     @ApiOperation(value = "用户信息修改")
     @PostMapping(value = "/modify")
     @ResponseBody
-    public  ResultVO modify(@Valid @RequestBody UserInfo param) {
+    public  ResultVO modify(@RequestBody UserInfo param) {
         iUserInfoService.modify(param);
         return ResultVOUtil.success();
     }
@@ -75,7 +75,7 @@ public class UserInfoController {
     @ApiOperation(value = "用户信息删除(多个条目)")
     @PostMapping(value = "/removes")
     @ResponseBody
-    public  ResultVO removes(@Valid @RequestBody List<Long> ids) {
+    public  ResultVO removes(@RequestBody List<Long> ids) {
         iUserInfoService.removes(ids);
         return ResultVOUtil.success();
     }

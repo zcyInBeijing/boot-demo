@@ -20,7 +20,7 @@ import com.xfs.base.PageVo;
 </#if>
 
 
-import javax.validation.Valid;
+import com.xfs.annotation.ParamValid;
 import java.util.List;
 
 /**
@@ -53,7 +53,7 @@ public class ${table.controllerName} {
     @ApiOperation(value = "${table.comment}分页查询", response = ${entity}.class)
     @PostMapping("/page")
     @ResponseBody
-    public ResultVO queryWithPage (@Valid @RequestBody PageVo param){
+    public ResultVO queryWithPage (@RequestBody PageVo param){
         Object data = ${table.serviceName?uncap_first}.page(param);
         return ResultVOUtil.success(data);
     }
@@ -69,7 +69,7 @@ public class ${table.controllerName} {
     @ApiOperation(value = "${table.comment}新增")
     @PostMapping(value = "/add")
     @ResponseBody
-    public  ResultVO add(@Valid @RequestBody ${entity} param) {
+    public  ResultVO add(@RequestBody ${entity} param) {
         ${table.serviceName?uncap_first}.add(param);
         return ResultVOUtil.success();
     }
@@ -77,7 +77,7 @@ public class ${table.controllerName} {
     @ApiOperation(value = "${table.comment}修改")
     @PostMapping(value = "/modify")
     @ResponseBody
-    public  ResultVO modify(@Valid @RequestBody ${entity} param) {
+    public  ResultVO modify(@RequestBody ${entity} param) {
         ${table.serviceName?uncap_first}.modify(param);
         return ResultVOUtil.success();
     }
@@ -93,7 +93,7 @@ public class ${table.controllerName} {
     @ApiOperation(value = "${table.comment}删除(多个条目)")
     @PostMapping(value = "/removes")
     @ResponseBody
-    public  ResultVO removes(@Valid @RequestBody List<Long> ids) {
+    public  ResultVO removes(@RequestBody List<Long> ids) {
         ${table.serviceName?uncap_first}.removes(ids);
         return ResultVOUtil.success();
     }

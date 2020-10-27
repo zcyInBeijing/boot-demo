@@ -4,10 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @Description: 参数错误
- * @Author lining
- * @Date 2019/8/30 17:18
- **/
+ * 参数验证错误码定义
+ * @author zhuchunyang
+ */
 public class ArgsErrorCode {
 
     public static final Map<Integer,String> errorMsgMap = new HashMap(){

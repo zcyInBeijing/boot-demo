@@ -21,68 +21,62 @@ import java.util.List;
     * 用户信息 前端控制器
     * </p>
 *
-* @author zhucy
-* @since 2020-10-26
+* @author mybatis-plus
+* @since 2020-10-27
 */
 @Api(tags = "用户信息")
-    @RestController
+@RestController
 @RequestMapping("/userInfoController")
-    public class UserInfoController {
+public class UserInfoController {
 
-@Autowired
-private IUserInfoService iUserInfoService;
+    @Autowired
+    private IUserInfoService iUserInfoService;
 
-@ApiOperation(value = "用户信息分页查询", response = UserInfo.class)
-@PostMapping("/page")
-@ResponseBody
-public ResultVO queryWithPage (@Valid @RequestBody PageVo param){
-Object data = iUserInfoService.page(param);
-return ResultVOUtil.success(data);
-}
-
-@ApiOperation(value = "用户信息详情", response = UserInfo.class)
-@GetMapping(value = "/info/{id}")
-@ResponseBody
-public  ResultVO info(@PathVariable Long id) {
-
-Object data = iUserInfoService.info(id);
-return ResultVOUtil.success(data);
-}
-
-@ApiOperation(value = "用户信息新增")
-@PostMapping(value = "/add")
-@ResponseBody
-public  ResultVO add(@Valid @RequestBody UserInfo param) {
-
-iUserInfoService.add(param);
-return ResultVOUtil.success();
-}
-
-@ApiOperation(value = "用户信息修改")
-@PostMapping(value = "/modify")
-@ResponseBody
-public  ResultVO modify(@Valid @RequestBody UserInfo param) {
-
-iUserInfoService.modify(param);
-return ResultVOUtil.success();
-}
-
-@ApiOperation(value = "用户信息删除(单个条目)")
-@GetMapping(value = "/remove/{id}")
-@ResponseBody
-public  ResultVO remove(@PathVariable Long id) {
-
-iUserInfoService.remove(id);
-return ResultVOUtil.success();
-}
-
-@ApiOperation(value = "用户信息删除(多个条目)")
-@PostMapping(value = "/removes")
-@ResponseBody
-public  ResultVO removes(@Valid @RequestBody List<Long> ids) {
-
-    iUserInfoService.removes(ids);
-    return ResultVOUtil.success();
+    @ApiOperation(value = "用户信息分页查询", response = UserInfo.class)
+    @PostMapping("/page")
+    @ResponseBody
+    public ResultVO queryWithPage (@Valid @RequestBody PageVo param){
+        Object data = iUserInfoService.page(param);
+        return ResultVOUtil.success(data);
     }
 
+    @ApiOperation(value = "用户信息详情", response = UserInfo.class)
+    @GetMapping(value = "/info/{id}")
+    @ResponseBody
+    public  ResultVO info(@PathVariable Long id) {
+        Object data = iUserInfoService.info(id);
+        return ResultVOUtil.success(data);
     }
+
+    @ApiOperation(value = "用户信息新增")
+    @PostMapping(value = "/add")
+    @ResponseBody
+    public  ResultVO add(@Valid @RequestBody UserInfo param) {
+        iUserInfoService.add(param);
+        return ResultVOUtil.success();
+    }
+
+    @ApiOperation(value = "用户信息修改")
+    @PostMapping(value = "/modify")
+    @ResponseBody
+    public  ResultVO modify(@Valid @RequestBody UserInfo param) {
+        iUserInfoService.modify(param);
+        return ResultVOUtil.success();
+    }
+
+    @ApiOperation(value = "用户信息删除(单个条目)")
+    @GetMapping(value = "/remove/{id}")
+    @ResponseBody
+    public  ResultVO remove(@PathVariable Long id) {
+        iUserInfoService.remove(id);
+        return ResultVOUtil.success();
+    }
+
+    @ApiOperation(value = "用户信息删除(多个条目)")
+    @PostMapping(value = "/removes")
+    @ResponseBody
+    public  ResultVO removes(@Valid @RequestBody List<Long> ids) {
+        iUserInfoService.removes(ids);
+        return ResultVOUtil.success();
+    }
+}

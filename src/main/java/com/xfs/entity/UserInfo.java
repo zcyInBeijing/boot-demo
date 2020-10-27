@@ -16,8 +16,8 @@ import lombok.experimental.Accessors;
  * 用户信息
  * </p>
  *
- * @author zhucy
- * @since 2020-10-26
+ * @author mybatis-plus
+ * @since 2020-10-27
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

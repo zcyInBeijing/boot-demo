@@ -18,11 +18,11 @@ import java.util.List;
     * 用户信息 服务实现类
     * </p>
 *
-* @author zhucy
-* @since 2020-10-26
+* @author mybatis-plus
+* @since 2020-10-27
 */
 @Service
-    public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> implements IUserInfoService {
+public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> implements IUserInfoService {
 
     /**
     * 用户信息分页列表
@@ -31,12 +31,10 @@ import java.util.List;
     */
     @Override
     public IPage<UserInfo> page(PageVo param) {
-
-    QueryWrapper<UserInfo> queryWrapper = new QueryWrapper<>();
-    Page<UserInfo> pageInfo = new Page<UserInfo>(param.getPageNum(),param.getPageSize());
-    IPage<UserInfo> page = page(pageInfo, queryWrapper);
-
-    return page;
+        QueryWrapper<UserInfo> queryWrapper = new QueryWrapper<>();
+        Page<UserInfo> pageInfo = new Page<UserInfo>(param.getPageNum(),param.getPageSize());
+        IPage<UserInfo> page = page(pageInfo, queryWrapper);
+        return page;
     }
 
     /**
@@ -46,8 +44,7 @@ import java.util.List;
     */
     @Override
     public UserInfo info(Long id) {
-
-    return getById(id);
+        return getById(id);
     }
 
     /**
@@ -57,8 +54,7 @@ import java.util.List;
     */
     @Override
     public void add(UserInfo param) {
-
-    save(param);
+        save(param);
     }
 
     /**
@@ -68,8 +64,7 @@ import java.util.List;
     */
     @Override
     public void modify(UserInfo param) {
-
-    updateById(param);
+        updateById(param);
     }
 
     /**
@@ -79,7 +74,7 @@ import java.util.List;
     */
     @Override
     public void remove(Long id) {
-    removeById(id);
+        removeById(id);
     }
 
     /**
@@ -89,7 +84,6 @@ import java.util.List;
     */
     @Override
     public void removes(List<Long> ids) {
-
-    removeByIds(ids);
+        removeByIds(ids);
     }
-    }
+}

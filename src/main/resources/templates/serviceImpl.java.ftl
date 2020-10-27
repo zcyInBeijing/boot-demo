@@ -27,7 +27,7 @@ import java.util.List;
 
     }
 <#else>
-    public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}> implements ${table.serviceName} {
+public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}> implements ${table.serviceName} {
 
     /**
     * ${table.comment!}分页列表
@@ -36,12 +36,10 @@ import java.util.List;
     */
     @Override
     public IPage<${entity}> page(PageVo param) {
-
-    QueryWrapper<${entity}> queryWrapper = new QueryWrapper<>();
-    Page<${entity}> pageInfo = new Page<${entity}>(param.getPageNum(),param.getPageSize());
-    IPage<${entity}> page = page(pageInfo, queryWrapper);
-
-    return page;
+        QueryWrapper<${entity}> queryWrapper = new QueryWrapper<>();
+        Page<${entity}> pageInfo = new Page<${entity}>(param.getPageNum(),param.getPageSize());
+        IPage<${entity}> page = page(pageInfo, queryWrapper);
+        return page;
     }
 
     /**
@@ -51,8 +49,7 @@ import java.util.List;
     */
     @Override
     public ${entity} info(Long id) {
-
-    return getById(id);
+        return getById(id);
     }
 
     /**
@@ -62,8 +59,7 @@ import java.util.List;
     */
     @Override
     public void add(${entity} param) {
-
-    save(param);
+        save(param);
     }
 
     /**
@@ -73,8 +69,7 @@ import java.util.List;
     */
     @Override
     public void modify(${entity} param) {
-
-    updateById(param);
+        updateById(param);
     }
 
     /**
@@ -84,7 +79,7 @@ import java.util.List;
     */
     @Override
     public void remove(Long id) {
-    removeById(id);
+        removeById(id);
     }
 
     /**
@@ -94,8 +89,7 @@ import java.util.List;
     */
     @Override
     public void removes(List<Long> ids) {
-
-    removeByIds(ids);
+        removeByIds(ids);
     }
-    }
+}
 </#if>

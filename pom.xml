@@ -58,7 +58,10 @@
             <version>2.3.28</version>
         </dependency>
 
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
         <!--数据库连接jdbc依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -121,6 +124,14 @@
             <groupId>com.xfs.trade.oms</groupId>
             <artifactId>trade-oms-rpc-api</artifactId>
             <version>1.0.0.20201020</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
         </dependency>
     </dependencies>
 

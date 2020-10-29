@@ -1,0 +1,96 @@
+dubbo:
+  application:
+    name: boot-demo
+    qos-port: 20107
+    version: 1.0.0
+  consumer:
+    timeout: 6000000
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 30108
+  provider:
+    timeout: 6000000
+  registry:
+    address: 127.0.0.1:2181
+    protocol: zookeeper
+    timeout: 6000001
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  typeAliasesPackage: com.xfs.entity
+server:
+  port: 666
+spring:
+  shardingsphere:
+    datasource:
+      names: sharding-0,sharding-1,sharding-2          #数据源名称  多数据源
+      sharding-0: #具体数据源的信息配置
+        type: com.zaxxer.hikari.HikariDataSource
+        jdbcUrl: jdbc:mysql://localhost:3306/sharding-0?useSSL=false&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&rewriteBatchedStatements=true&autoReconnect=true&allowMultiQueries=true
+        username: root
+        password: admin
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        platform: mysql
+      sharding-1: #具体数据源的信息配置
+        jdbcUrl: jdbc:mysql://localhost:3306/sharding-1?useSSL=false&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&rewriteBatchedStatements=true&autoReconnect=true&allowMultiQueries=true
+        username: root
+        password: admin
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        platform: mysql
+        type: com.zaxxer.hikari.HikariDataSource
+      sharding-2:
+        jdbcUrl: jdbc:mysql://localhost:3306/sharding-2?useSSL=false&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&rewriteBatchedStatements=true&autoReconnect=true&allowMultiQueries=true
+        username: root
+        password: admin
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        platform: mysql
+        type: com.zaxxer.hikari.HikariDataSource
+      # 下面为连接池的补充设置，应用到上面所有数据源中
+      hikari:
+        auto-commit: true
+        connection-test-query: SELECT 1
+        connection-timeout: 30000
+        idle-timeout: 30000
+        max-lifetime: 1800000
+        maximum-pool-size: 15
+        minimum-idle: 5
+        pool-name: DatebookHikariCP
+    sharding:
+      default-data-source-name: sharding-0
+      tables:
+        order_: ##逻辑表名
+          actual-data-nodes: sharding-$->{0..2}.order_$->{0..6}  #分表后实际物理表名
+          table-strategy:
+            #            complex:                    #多字段自定义分表策略
+            #              shardingColumns: brandId,projectId,createTime          #分表字段
+            #              algorithmClassName:                               #分表实现类
+            #            standard:                  #自定义分表规则
+            #              shardingColumn: user_id
+            #              preciseAlgorithmClassName: com.xfs.
+            #              rangeAlgorithmClassName:
+            inline: #行内分表策略
+              sharding-column: user_id
+              algorithm-expression: order_$->{user_id%7}            #行内分表策略表达式
+          key-generator: #主键生成器
+            column: id          #主键字段
+            type: SNOWFLAKE          #生成策略   此处采用sharding提供的雪花算法
+      #            props:
+      #              worker:
+      #                id: 1                #分布式主机id
+      default-database-strategy: #分库策略
+        inline: #行内分库策略       分库同时也支持分表的多字段以及自定义单字段分库策略，此处不在一一列出
+          algorithm-expression: sharding-$->{user_id%3}     #行内分库策略表达式
+          sharding-column: user_id                    #行内分库字段
+    props: #其他配置
+      sql.show: true     #sharing的日志  科清楚看到分到哪个库哪个表
+  redis:
+    host: 127.0.0.1
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1ms
+    port: 6379
+swagger:
+  whether:
+    open: 1

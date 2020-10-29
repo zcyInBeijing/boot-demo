@@ -48,13 +48,13 @@ public class ${table.controllerName} {
 </#if>
 
     @Autowired
-    private ${table.serviceName} ${table.serviceName?uncap_first};
+    private ${table.serviceName} ${table.entityPath}Service;
 
     @ApiOperation(value = "${table.comment}分页查询", response = ${entity}.class)
     @PostMapping("/page")
     @ResponseBody
     public ResultVO queryWithPage (@RequestBody PageVo param){
-        Object data = ${table.serviceName?uncap_first}.page(param);
+        Object data = ${table.entityPath}Service.page(param);
         return ResultVOUtil.success(data);
     }
 
@@ -62,7 +62,7 @@ public class ${table.controllerName} {
     @GetMapping(value = "/info/{id}")
     @ResponseBody
     public  ResultVO info(@PathVariable Long id) {
-        Object data = ${table.serviceName?uncap_first}.info(id);
+        Object data = ${table.entityPath}Service.info(id);
         return ResultVOUtil.success(data);
     }
 
@@ -70,7 +70,7 @@ public class ${table.controllerName} {
     @PostMapping(value = "/add")
     @ResponseBody
     public  ResultVO add(@RequestBody ${entity} param) {
-        ${table.serviceName?uncap_first}.add(param);
+        ${table.entityPath}Service.add(param);
         return ResultVOUtil.success();
     }
 
@@ -78,7 +78,7 @@ public class ${table.controllerName} {
     @PostMapping(value = "/modify")
     @ResponseBody
     public  ResultVO modify(@RequestBody ${entity} param) {
-        ${table.serviceName?uncap_first}.modify(param);
+        ${table.entityPath}Service.modify(param);
         return ResultVOUtil.success();
     }
 
@@ -86,7 +86,7 @@ public class ${table.controllerName} {
     @GetMapping(value = "/remove/{id}")
     @ResponseBody
     public  ResultVO remove(@PathVariable Long id) {
-        ${table.serviceName?uncap_first}.remove(id);
+        ${table.entityPath}Service.remove(id);
         return ResultVOUtil.success();
     }
 
@@ -94,7 +94,7 @@ public class ${table.controllerName} {
     @PostMapping(value = "/removes")
     @ResponseBody
     public  ResultVO removes(@RequestBody List<Long> ids) {
-        ${table.serviceName?uncap_first}.removes(ids);
+        ${table.entityPath}Service.removes(ids);
         return ResultVOUtil.success();
     }
 }

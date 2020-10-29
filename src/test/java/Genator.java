@@ -26,7 +26,7 @@ public class Genator {
     private static String ENTITY_IGNORE_PREFIX = "";
     /** 表名 */
     private static String[] TABLES = {
-            "user_info",
+            "order",
     };
 
 
@@ -49,16 +49,16 @@ public class Genator {
     private static String MAPPER_PATH = "/mapper/";
     private static String XML_PATH = "/resources/mapper/";
     private static String SERVICE_PATH = "/service/";
-    private static String SERVICE_IMPL_PATH = "/serviceImpl/";
+    private static String SERVICE_IMPL_PATH = "/service/impl/";
     private static String CONTROLLER_PATH = "/controller/";
 
 
     // 数据库
     private static String username = "root";
-    private static String password = "root123";
-    private static String url = "jdbc:mysql://localhost:3306/test?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false";
+    private static String password = "admin";
+    private static String url = "jdbc:mysql://localhost:3306/sharding-0?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false";
     private static DbType DB_TYPE = DbType.MYSQL;
-    private static String driverClassName = "com.mysql.jdbc.Driver";
+    private static String driverClassName = "com.mysql.cj.jdbc.Driver";
 
 
     // 自定义输出模板和位置

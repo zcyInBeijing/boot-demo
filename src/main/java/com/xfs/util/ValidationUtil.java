@@ -1,8 +1,8 @@
 package com.xfs.util;
 
+import cn.hutool.core.util.StrUtil;
 import com.xfs.base.ArgsErrorCode;
 import com.xfs.base.ServiceException;
-import org.apache.commons.lang.StringUtils;
 import org.hibernate.validator.HibernateValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +27,7 @@ public class ValidationUtil {
         Set<ConstraintViolation<T>> constraintViolations = validator.validate(obj);
         if (constraintViolations.size() > 0) {
             String errorCode = constraintViolations.iterator().next().getMessage();
-            if(StringUtils.isBlank(errorCode)){
+            if(StrUtil.isBlank(errorCode)){
                 logger.info("错误码为空！");
                 return ;
             }

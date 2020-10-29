@@ -1,0 +1,16 @@
+logging:
+  config:
+    classpath: logback-spring.xml
+  file:
+    path: /Users/lijia/Desktop/boot-demo/logs
+spring:
+  profiles:
+#    active: dev
+    main:
+      allow-bean-definition-overriding: true
+    include:
+     - dev
+#     - pro
+mybatis-plus:
+  global-config:
+    banner: off

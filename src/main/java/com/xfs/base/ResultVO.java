@@ -2,6 +2,7 @@ package com.xfs.base;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.ToString;
 
 /**
  * @description: TODO
@@ -9,9 +10,10 @@ import io.swagger.annotations.ApiModelProperty;
  * @create : 2019/5/5 14:57
  */
 @ApiModel(description = "返回结果")
+@ToString
 public class ResultVO<T> {
     @ApiModelProperty(value = "返回编码",name = "code")
-    private int code;
+    private Integer code;
     @ApiModelProperty(value = "返回信息",name = "msg")
     private String msg;
     @ApiModelProperty(value = "返回对象",name = "result")
@@ -44,10 +46,7 @@ public class ResultVO<T> {
     }
 
     public boolean isOk(){
-        if(ResultCodeEnum.REQUEST_OK.getCode() == this.getCode())
-            return true;
-        else
-            return false;
+        return ResultCodeEnum.REQUEST_OK.getCode().equals(this.getCode());
     }
 
     public ResultVO(ResultCodeEnum status) {
@@ -56,11 +55,11 @@ public class ResultVO<T> {
         this.result = null;
     }
 
-    public int getCode() {
+    public Integer getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(Integer code) {
         this.code = code;
     }
 

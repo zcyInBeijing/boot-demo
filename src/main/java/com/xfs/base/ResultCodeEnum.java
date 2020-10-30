@@ -42,19 +42,19 @@ public enum ResultCodeEnum {
     UPLOADFILE_MISS(20020,"上传文件缺失"),
     TIMEINTERVAL_NOILLEGAL(20021,"时间区间不合法");
 
-    private int code;
+    private Integer code;
     private String msg;
 
-    ResultCodeEnum(int code, String msg) {
+    ResultCodeEnum(Integer code, String msg) {
         this.code = code;
         this.msg = msg;
     }
 
-    public int getCode() {
+    public Integer getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(Integer code) {
         this.code = code;
     }
 

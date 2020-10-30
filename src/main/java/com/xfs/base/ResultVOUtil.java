@@ -1,5 +1,9 @@
 package com.xfs.base;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import sun.security.provider.certpath.OCSPResponse;
+
 /**
  * @description: TODO
  * @author: zhucy
@@ -64,6 +68,17 @@ public class ResultVOUtil {
         vo.setMsg(msg);
         return vo;
     }
+    /**
+     * businessError 返回业务错误信息
+     * @param data data
+     * @return
+     */
+    public static<T> ResultVO<T> paramError(T data){
+        ResultVO<T> vo = new ResultVO<T>(data);
+        vo.setCode(ResultCodeEnum.INVALID_REQUEST.getCode());
+        vo.setMsg(ResultCodeEnum.INVALID_REQUEST.getMsg());
+        return vo;
+    }
 
     /**
      * businessError 返回业务失败
@@ -87,7 +102,7 @@ public class ResultVOUtil {
         return new ResultVO<T>(code,t);
     }
 
-    public static<T> ResultVO<T> createResult(int code,String msg) {
+    public static<T> ResultVO<T> createResult(Integer code,String msg) {
 
         return new ResultVO<T>(code,msg);
     }

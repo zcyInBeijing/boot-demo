@@ -5,7 +5,6 @@ logging:
     path: /Users/lijia/Desktop/boot-demo/logs
 spring:
   profiles:
-#    active: dev
     main:
       allow-bean-definition-overriding: true
     include:

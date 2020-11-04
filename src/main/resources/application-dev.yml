@@ -82,7 +82,7 @@ spring:
           algorithm-expression: sharding-$->{user_id%3}     #行内分库策略表达式
           sharding-column: user_id                    #行内分库字段
     props: #其他配置
-      sql.show: true     #sharing的日志  科清楚看到分到哪个库哪个表
+      sql.show: true     #sharing的日志  可清楚看到分到哪个库哪个表
   redis:
     host: 127.0.0.1
     lettuce:

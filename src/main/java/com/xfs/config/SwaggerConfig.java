@@ -57,17 +57,6 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo());
         List<ResponseMessage> responseMessageList = new ArrayList<>();
         responseMessageList.add(new ResponseMessageBuilder().code(200).message("请求成功").build());
-        responseMessageList.add(new ResponseMessageBuilder().code(401).message("未登录").build());
-        responseMessageList.add(new ResponseMessageBuilder().code(500).message("服务异常").build());
-        responseMessageList.add(new ResponseMessageBuilder().code(10001).message("未进行授权").build());
-        responseMessageList.add(new ResponseMessageBuilder().code(10002).message("非法的请求参数").build());
-        responseMessageList.add(new ResponseMessageBuilder().code(10003).message("用户认证失败").build());
-        responseMessageList.add(new ResponseMessageBuilder().code(10007).message("Ticket不合法").build());
-        responseMessageList.add(new ResponseMessageBuilder().code(10008).message("不存在的用户").build());
-        responseMessageList.add(new ResponseMessageBuilder().code(20002).message("缺少必选参数").build());
-        responseMessageList.add(new ResponseMessageBuilder().code(20005).message("无效的操作方法").build());
-        responseMessageList.add(new ResponseMessageBuilder().code(20009).message("无效的url").build());
-        responseMessageList.add(new ResponseMessageBuilder().code(20010).message("不合法的请求格式").build());
         docket.globalResponseMessage(RequestMethod.GET,responseMessageList);
         docket.globalResponseMessage(RequestMethod.POST,responseMessageList);
         docket.globalResponseMessage(RequestMethod.PUT,responseMessageList);
